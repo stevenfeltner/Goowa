@@ -2,14 +2,14 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   annotations:
-      keda.sh/namespace: wx-dev16
-  name: fountain-repro-http-scaler
-  namespace: fountain-repro
+      keda.sh/namespace: argo-hpa
+  name: http-scaler
+  namespace: argo-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: fountain-repro-http
+    name: http-scaler
   minReplicaCount: 2
   maxReplicaCount: 4
   advanced:
@@ -32,9 +32,7 @@ spec:
       metricType: Utilization
       metadata:
         value: "80"
-    - type: prometheus
+    - type: memory
+      metricType: Utilization
       metadata:
-        metricName: fountain_repro_http_request_rate
-        query: sum(rate(traces_span_metrics_duration_milliseconds_count{k8s_namespace_name="fountain-repro",service_name="fountain-repro-http",span_name=~"HTTP (GET|POST|PUT|PATCH|DELETE|HEAD|OPTIONS)"}[5m])) or vector(0)
-        serverAddress: http://kube-prometheus-kube-prome-prometheus.prometheus.svc.cluster.local:9090
-        threshold: "0.05"
+        value: "80"
