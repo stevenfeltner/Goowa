@@ -1,19 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fountain-repro-http
-  namespace: fountain-repro
+  name: http
+  namespace: argo-hpa
   labels:
-    app: fountain-repro-http
+    app: http
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: fountain-repro-http
+      app: http
   template:
     metadata:
       labels:
-        app: fountain-repro-http
+        app: http
     spec:
       containers:
         - name: app
