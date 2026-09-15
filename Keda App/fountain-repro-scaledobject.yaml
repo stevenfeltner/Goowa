@@ -3,7 +3,7 @@ kind: ScaledObject
 metadata:
   annotations:
       keda.sh/namespace: argo-hpa
-      argo/replicas: "3"
+      argo/replicas: "2"
   name: http-scaler
   namespace: argo-hpa
 spec:
@@ -11,7 +11,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: http
-  minReplicaCount: 3
+  minReplicaCount: 2
   maxReplicaCount: 4
   advanced:
     horizontalPodAutoscalerConfig:
