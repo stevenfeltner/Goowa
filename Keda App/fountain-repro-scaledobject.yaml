@@ -10,7 +10,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: http
-  minReplicaCount: 2
+  minReplicaCount: 3
   maxReplicaCount: 4
   advanced:
     horizontalPodAutoscalerConfig:
