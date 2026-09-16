@@ -3,8 +3,6 @@ kind: ScaledObject
 metadata:
   annotations:
       keda.sh/namespace: argo-hpa
-      argo/replicas: "3"
-      analysis.scaleops.io/original-min-replicas: '2'
   name: http-scaler
   namespace: argo-hpa
 spec:
